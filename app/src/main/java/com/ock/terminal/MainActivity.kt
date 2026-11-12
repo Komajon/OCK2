@@ -227,7 +227,7 @@ class MainActivity : Activity() {
         val row=LinearLayout(this).apply { gravity=Gravity.CENTER_VERTICAL; background=rounded(panel,16); setPadding(d(6),d(4),d(6),d(4)) }
         commandInput=EditText(this).apply {
             hint="Введите команду…"; setHintTextColor(muted); setTextColor(white); textSize=14f
-            typeface=Typeface.MONOSPACE; singleLine=true; imeOptions=EditorInfo.IME_ACTION_SEND
+            typeface=Typeface.MONOSPACE; isSingleLine=true; imeOptions=EditorInfo.IME_ACTION_SEND
             setBackgroundColor(Color.TRANSPARENT)
             setOnEditorActionListener { _,_,_ -> sendCommand(); true }
         }
