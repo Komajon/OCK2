@@ -16,8 +16,10 @@ OCK combines an Android terminal with a lightweight app launcher. Install a GitH
 
 1. Create a GitHub repository and upload the contents of this project.
 2. Push to `main` or `master`, or open **Actions → OCK Android Build → Run workflow**.
-3. Open the completed workflow run and download **OCK-debug-apk** or **OCK-release-apk** from Artifacts.
-4. To publish an APK in the repository's **Releases**, create a GitHub Release (for example tag `v2.0.0`). The workflow attaches the release APK automatically.
+3. After a successful push/manual run, the workflow commits the debug APK directly into `builds/OCK-debug.apk` in the repository. Download it by opening that file and choosing **Download raw file**.
+4. To publish APKs in the repository's **Releases**, create a GitHub Release. The workflow attaches both debug and release APKs automatically.
+
+The workflow deliberately does not use `actions/upload-artifact`, so it does not consume the GitHub Actions artifact-storage quota.
 
 No signing secrets are required for CI. The release APK produced by this workflow is unsigned; Android may not allow it to update an already installed build signed with a different key. For public distribution, configure a permanent signing key and keep it private.
 
